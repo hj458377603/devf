@@ -1,23 +1,27 @@
-package org.dream.web.controller;
+ï»¿package org.dream.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.dream.bean.ResultBean;
 import org.dream.bean.UserBean;
+import org.dream.intf.UUIDService;
 import org.dream.intf.UserService;
 import org.dream.web.controller.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * ²âÊÔcontroller
+ * æµ‹è¯•controller
  * 
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 @Controller
 @RequestMapping("/account")
@@ -25,14 +29,52 @@ public class AccountController extends BaseController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UUIDService uuidService;
+
     /**
-     * »ñÈ¡ÓÃ»§ĞÅÏ¢
-     *
+     * åŠŸèƒ½æè¿°: <br>
+     * ç™»é™†
+     * 
+     * @param userBean
+     * @param response
+     * @see [ç›¸å…³ç±»/æ–¹æ³•](å¯é€‰)
+     * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬](å¯é€‰)
+     */
+    @RequestMapping("/login")
+    public void login(UserBean userBean, HttpServletRequest request, HttpServletResponse response) {
+        ResultBean resultBean = new ResultBean();
+        // è¾“å…¥æ ¡éªŒ
+        if (userBean == null || !StringUtils.hasText(userBean.getUserName())
+                || !StringUtils.hasText(userBean.getPwd())) {
+            ajaxJson(response, resultBean);
+            return;
+        }
+        int loginRes = userService.login(userBean);
+        
+        // ç™»é™†æˆåŠŸ
+        if (1 == loginRes) {
+            HttpSession session = request.getSession();
+            String logonToken=uuidService.getUUID();
+            session.setAttribute(userBean.getUserName(), uuidService.getUUID());
+            resultBean.setData(logonToken);
+            ajaxJson(response, resultBean);
+            return;
+        }else{
+            // ç™»é™†å¤±è´¥
+            ajaxJson(response, resultBean);
+            return;
+        }
+    }
+
+    /**
+     * è·å–ç”¨æˆ·ä¿¡æ¯
+     * 
      * @param userId
      * @param request
      * @param response
-     * @see [Ïà¹ØÀà/·½·¨](¿ÉÑ¡)
-     * @since [²úÆ·/Ä£¿é°æ±¾](¿ÉÑ¡)
+     * @see [ç›¸å…³ç±»/æ–¹æ³•](å¯é€‰)
+     * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬](å¯é€‰)
      */
     @RequestMapping("/getUserInfo/{userId}")
     public void getUserInfo(@PathVariable Integer userId, HttpServletRequest request,
@@ -43,13 +85,13 @@ public class AccountController extends BaseController {
     }
 
     /**
-     * ×¢²áÓÃ»§
-     *
+     * æ³¨å†Œç”¨æˆ·
+     * 
      * @param userBean
      * @param request
      * @param response
-     * @see [Ïà¹ØÀà/·½·¨](¿ÉÑ¡)
-     * @since [²úÆ·/Ä£¿é°æ±¾](¿ÉÑ¡)
+     * @see [ç›¸å…³ç±»/æ–¹æ³•](å¯é€‰)
+     * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬](å¯é€‰)
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void addUser(UserBean userBean, HttpServletRequest request, HttpServletResponse response) {

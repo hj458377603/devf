@@ -1,4 +1,4 @@
-package org.dream.web.controller.base;
+ï»¿package org.dream.web.controller.base;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -6,25 +6,25 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * »ù´¡controller
- *
+ * åŸºç¡€controller
+ * 
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 public class BaseController {
     protected static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-    
+                                       .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+
     /**
-     * ¹¦ÄÜÃèÊö£º¸ù¾İObjectÊä³öJSON×Ö·û´®
+     * åŠŸèƒ½æè¿°ï¼šæ ¹æ®Objectè¾“å‡ºJSONå­—ç¬¦ä¸²
      */
     public String getJson(Object jsonObject) {
         return gson.toJson(jsonObject);
     }
-    
+
     /**
-     * ¸ù¾İ×Ö·û´®Êä³öJSON£¬·µ»Ønull
+     * æ ¹æ®å­—ç¬¦ä¸²è¾“å‡ºJSONï¼Œè¿”å›null
      * 
      * @param content
      * @param type
@@ -39,8 +39,22 @@ public class BaseController {
             response.getWriter().write(content);
             response.getWriter().flush();
         } catch (Exception e) {
-            // ÈÕÖ¾
+            // æ—¥å¿—
         }
     }
 
+    
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * è¾“å‡ºJSONï¼Œè¿”å›null
+     *
+     * @param response
+     * @param obj
+     * @see [ç›¸å…³ç±»/æ–¹æ³•](å¯é€‰)
+     * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬](å¯é€‰)
+     */
+    public void ajaxJson(HttpServletResponse response, Object obj) {
+        String result = gson.toJson(obj);
+        ajaxJson(response,result);
+    }
 }

@@ -1,12 +1,12 @@
-package org.dream.bean;
+ï»¿package org.dream.bean;
 
 /**
- * ¡´Ò»¾ä»°¹¦ÄÜ¼òÊö¡µ<br>
- * ¡´¹¦ÄÜÏêÏ¸ÃèÊö¡µ
+ * ã€ˆä¸€å¥è¯åŠŸèƒ½ç®€è¿°ã€‰<br>
+ * ã€ˆåŠŸèƒ½è¯¦ç»†æè¿°ã€‰
  * 
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 public class UserBean {
     private int    userId;

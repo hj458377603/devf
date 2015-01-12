@@ -6,6 +6,11 @@
 		resultType="org.dream.bean.UserBean">
 		SELECT * FROM t_user WHERE userId=#{userId};
 	</select>
+	<select id="login" parameterType="org.dream.bean.UserBean"
+		resultType="int">
+		SELECT count(*) FROM t_user WHERE userName=#{userName} and
+		pwd=#{pwd};
+	</select>
 	<insert id="save" parameterType="org.dream.bean.UserBean"
 		flushCache="true" useGeneratedKeys="true">
 		<selectKey resultType="int" keyProperty="userId" order="AFTER">

@@ -1,15 +1,16 @@
-package org.dream.dao;
+ï»¿package org.dream.dao;
 
 import org.dream.bean.UserBean;
 
 /**
- * Êı¾İ¿â·ÃÎÊÀà
+ * æ•°æ®åº“è®¿é—®ç±»
  *
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 public interface UserMapper {
     UserBean queryByUserId(int userId);
     int save(UserBean userBean);
+    int login(UserBean userBean);
 }

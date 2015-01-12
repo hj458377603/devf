@@ -1,6 +1,8 @@
-package org.dream.service;
+ï»¿package org.dream.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.dream.bean.AppBean;
 import org.dream.dao.AppMapper;
@@ -9,20 +11,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * ¡´Ò»¾ä»°¹¦ÄÜ¼òÊö¡µ<br> 
- * ¡´¹¦ÄÜÏêÏ¸ÃèÊö¡µ
- *
+ * ã€ˆä¸€å¥è¯åŠŸèƒ½ç®€è¿°ã€‰<br>
+ * ã€ˆåŠŸèƒ½è¯¦ç»†æè¿°ã€‰
+ * 
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 @Service
 public class AppServiceImpl implements AppService {
     @Autowired
     AppMapper appMapper;
-    
-    public List<AppBean> queryAllAppBeans() {
-        return appMapper.queryAllAppList();
+
+    public List<AppBean> queryAllAppBeans(int pageSize, int pageIndex) {
+        int begin = (pageIndex - 1) * pageSize;
+        Map<String, Object> map=new HashMap<String, Object>();
+        map.put("begin", begin);
+        map.put("pageSize", pageSize);
+        return appMapper.queryAllAppList(map);
     }
 
 }

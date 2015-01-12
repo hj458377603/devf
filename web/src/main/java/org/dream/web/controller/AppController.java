@@ -1,4 +1,4 @@
-package org.dream.web.controller;
+ï»¿package org.dream.web.controller;
 
 import java.util.List;
 
@@ -14,23 +14,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * ¡´Ò»¾ä»°¹¦ÄÜ¼òÊö¡µ<br>
- * ¡´¹¦ÄÜÏêÏ¸ÃèÊö¡µ
+ * ã€ˆä¸€å¥è¯åŠŸèƒ½ç®€è¿°ã€‰<br>
+ * ã€ˆåŠŸèƒ½è¯¦ç»†æè¿°ã€‰
  * 
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 @Controller
 @RequestMapping("/app")
 public class AppController extends BaseController {
+    private static final int PAGE_SIZE = 2;
+
     @Autowired
-    AppService appService;
-    
+    AppService               appService;
+
     @RequestMapping("/getAppList/{pageIndex}")
     public void getAppList(@PathVariable Integer pageIndex, HttpServletRequest request,
             HttpServletResponse response) {
-        List<AppBean> appBeans = appService.queryAllAppBeans();
+        List<AppBean> appBeans = appService.queryAllAppBeans(PAGE_SIZE, pageIndex);
         String appsJsonStr = gson.toJson(appBeans);
         ajaxJson(response, appsJsonStr);
     }

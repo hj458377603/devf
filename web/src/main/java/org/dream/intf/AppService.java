@@ -1,17 +1,26 @@
-package org.dream.intf;
+ï»¿package org.dream.intf;
 
 import java.util.List;
 
 import org.dream.bean.AppBean;
 
 /**
- * ¡´Ò»¾ä»°¹¦ÄÜ¼òÊö¡µ<br> 
- * ¡´¹¦ÄÜÏêÏ¸ÃèÊö¡µ
+ * åº”ç”¨ä¿¡æ¯æœåŠ¡
  *
  * @author Administrator
- * @see [Ïà¹ØÀà/·½·¨]£¨¿ÉÑ¡£©
- * @since [²úÆ·/Ä£¿é°æ±¾] £¨¿ÉÑ¡£©
+ * @see [ç›¸å…³ç±»/æ–¹æ³•]ï¼ˆå¯é€‰ï¼‰
+ * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬] ï¼ˆå¯é€‰ï¼‰
  */
 public interface AppService {
-    List<AppBean> queryAllAppBeans();
+    /**
+     * åŠŸèƒ½æè¿°: <br>
+     * åˆ†é¡µæŸ¥è¯¢åº”ç”¨ä¿¡æ¯
+     *
+     * @param pageSize
+     * @param pageIndex
+     * @return
+     * @see [ç›¸å…³ç±»/æ–¹æ³•](å¯é€‰)
+     * @since [äº§å“/æ¨¡å—ç‰ˆæœ¬](å¯é€‰)
+     */
+    List<AppBean> queryAllAppBeans(int pageSize,int pageIndex);
 }
