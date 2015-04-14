@@ -1,5 +1,7 @@
 ﻿package org.dream.web.controller.base;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
@@ -31,23 +33,22 @@ public class BaseController {
      * @return
      */
     public void ajaxJson(HttpServletResponse response, String content) {
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
         try {
-            response.setContentType("text/plain;charset=UTF-8");
-            response.setHeader("Pragma", "No-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
             response.getWriter().write(content);
             response.getWriter().flush();
-        } catch (Exception e) {
+        } catch (IOException e) {
             // 日志
         }
     }
 
-    
     /**
      * 功能描述: <br>
      * 输出JSON，返回null
-     *
+     * 
      * @param response
      * @param obj
      * @see [相关类/方法](可选)
@@ -55,6 +56,6 @@ public class BaseController {
      */
     public void ajaxJson(HttpServletResponse response, Object obj) {
         String result = gson.toJson(obj);
-        ajaxJson(response,result);
+        ajaxJson(response, result);
     }
 }

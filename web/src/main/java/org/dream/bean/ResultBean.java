@@ -1,13 +1,3 @@
-/*
- * Copyright (C), 2002-2015, 苏宁易购电子商务有限公司
- * FileName: ResultBean.java
- * Author:   Administrator
- * Date:     2015-1-12 下午7:37:56
- * Description: //模块目的、功能描述      
- * History: //修改记录
- * <author>      <time>      <version>    <desc>
- * 修改人姓名             修改时间            版本号                  描述
- */
 package org.dream.bean;
 
 /**
@@ -18,12 +8,12 @@ package org.dream.bean;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ResultBean {
+public class ResultBean<T> {
     private int    result;
 
     private String msg;
 
-    private String data;
+    private T data;
 
     public ResultBean() {
         result = 0;
@@ -60,14 +50,14 @@ public class ResultBean {
     /**
      * @return the data
      */
-    public String getData() {
+    public T getData() {
         return data;
     }
 
     /**
      * @param data the data to set
      */
-    public void setData(String data) {
+    public void setData(T data) {
         this.data = data;
     }
 

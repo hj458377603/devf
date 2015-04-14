@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.dream.bean.AppBean;
 import org.dream.intf.AppService;
+import org.dream.utils.compression.CompressionUtils;
 import org.dream.web.controller.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,5 +36,11 @@ public class AppController extends BaseController {
         List<AppBean> appBeans = appService.queryAllAppBeans(PAGE_SIZE, pageIndex);
         String appsJsonStr = gson.toJson(appBeans);
         ajaxJson(response, appsJsonStr);
+    }
+    
+    @RequestMapping("/decompression")
+    public void decompression(HttpServletRequest request,
+            HttpServletResponse response){
+        CompressionUtils.decompression();
     }
 }
