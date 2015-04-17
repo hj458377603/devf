@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.account.AccountDao">
+	<select id="queryByUserNameAndPwd" parameterType="java.util.Map"
+		resultType="org.dream.bean.account.Account">
+		SELECT
+		id,email,nickName,accessToken,accountState,createTime
+		FROM Account 
+		WHERE
+			email=#{email}
+		AND
+			pwd=#{pwd}
+	</select>
+</mapper>  

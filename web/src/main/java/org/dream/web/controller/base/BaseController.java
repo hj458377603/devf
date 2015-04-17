@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.dream.bean.response.ResponseBean;
+import org.dream.bean.response.ResultBean;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,7 +35,7 @@ public class BaseController {
      * @param type
      * @return
      */
-    public void ajaxJson(HttpServletResponse response, String content) {
+    private void ajaxJson(HttpServletResponse response, String content) {
         response.setContentType("text/plain;charset=UTF-8");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
@@ -54,8 +57,19 @@ public class BaseController {
      * @see [相关类/方法](可选)
      * @since [产品/模块版本](可选)
      */
-    public void ajaxJson(HttpServletResponse response, Object obj) {
-        String result = gson.toJson(obj);
+    public void ajaxJson(HttpServletResponse response, ResultBean resultBean) {
+        String res = null;
+        String msg = null;
+        ResponseBean responseBean = null;
+        if (resultBean != null) {
+            if (resultBean.getErrorCode() != null) {
+                res = resultBean.getErrorCode().getCode();
+                msg = resultBean.getErrorCode().getMsg();
+            }
+            responseBean = new ResponseBean(res, msg, resultBean.getData());
+        }
+
+        String result = gson.toJson(responseBean);
         ajaxJson(response, result);
     }
 }

@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<!-- 该 BeanPostProcessor 将自动起作用，对标注 @Autowired 的 Bean 进行自动注入 -->
-	<bean
-		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+    
+	<!-- 指定自动扫描路径 -->
+	<context:component-scan base-package="org.dream"></context:component-scan>
+
 	<!-- 配置数据源 -->
 	<bean id="jdbcDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -13,7 +14,7 @@
 			<value>org.gjt.mm.mysql.Driver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:mysql://localhost:3306/devfriend?useUnicode=true&amp;characterEncoding=UTF-8
+			<value>jdbc:mysql://localhost:3306/mydb?useUnicode=true&amp;characterEncoding=UTF-8
 			</value>
 		</property>
 		<property name="username">
@@ -31,6 +32,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="org.dream.dao" />
 	</bean>
+
 	<!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
 		<property name="mapperInterface" value="org.dream.dao.UserMapper"></property> 
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property> </bean> -->

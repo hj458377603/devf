@@ -15,4 +15,18 @@
 			<bean class="org.dream.interceptors.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<!-- targetObject确定目标Bean，指定调用哪个Bean -->
+		<property name="targetObject" ref="validatorService" />
+		<!-- targetMethod确定目标方法，指定调用目标Bean的哪个方法 -->
+		<property name="targetMethod" value="registerValidator" />
+		<property name="arguments">
+			<list>
+				<ref local="emailValidator" />
+				<ref local="pwdValidator" />
+			</list>
+		</property>
+	</bean>
 </beans>

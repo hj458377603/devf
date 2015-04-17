@@ -1,4 +1,4 @@
-package org.dream.bean;
+package org.dream.bean.response;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -8,29 +8,31 @@ package org.dream.bean;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ResultBean<T> {
-    private int    result;
+public class ResponseBean<T> {
+    private String res;
 
     private String msg;
 
-    private T data;
+    private T      data;
 
-    public ResultBean() {
-        result = 0;
+    public ResponseBean(String res, String msg, T data) {
+        this.res = res;
+        this.msg = msg;
+        this.data = data;
     }
 
     /**
-     * @return the result
+     * @return the res
      */
-    public int getResult() {
-        return result;
+    public String getRes() {
+        return res;
     }
 
     /**
-     * @param result the result to set
+     * @param res the res to set
      */
-    public void setResult(int result) {
-        this.result = result;
+    public void setRes(String res) {
+        this.res = res;
     }
 
     /**

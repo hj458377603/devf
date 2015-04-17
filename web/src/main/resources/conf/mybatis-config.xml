@@ -4,7 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<mappers>
-		<mapper resource="sqlmap/userMapper.xml" />
-		<mapper resource="sqlmap/appMapper.xml" />
+		<mapper resource="sqlmap/accountMapper.xml" />
 	</mappers>
 </configuration>  
