@@ -29,4 +29,18 @@ public class ErrorController extends BaseController {
         ResultBean<TraceId> result = new ResultBean<TraceId>(ErrorCode.SYSTEM_ERROR, traceId);
         ajaxJson(response, result);
     }
+    
+    @RequestMapping(value = "/400", method = { RequestMethod.GET, RequestMethod.POST })
+    public void error400(HttpServletRequest httpServletRequest, HttpServletResponse response) {
+        Exception exception = (Exception) httpServletRequest
+                .getAttribute("javax.servlet.error.exception");
+        String traceIdString = UuidUtil.getUUID();
+        TraceId traceId = new TraceId(traceIdString);
+        if (exception != null) {
+            // logger.error("traceId:[" + traceId + "]" +
+            // exception.getMessage(), exception);
+        }
+        ResultBean<TraceId> result = new ResultBean<TraceId>(ErrorCode.SYSTEM_400_ERROR, traceId);
+        ajaxJson(response, result);
+    }
 }

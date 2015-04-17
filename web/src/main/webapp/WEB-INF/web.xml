@@ -40,6 +40,10 @@
 		<error-code>404</error-code>
 		<location>/index.jsp</location>
 	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error/400</location>
+	</error-page>
 
 	<!-- 设置session失效，单位分 -->
 	<session-config>
