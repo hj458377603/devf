@@ -35,13 +35,14 @@ public class ErrorController extends BaseController {
     }
 
     private void errorHandle(ErrorCode errorCode, HttpServletRequest httpServletRequest,
-            HttpServletResponse response) {
+            HttpServletResponse response) {        
         Exception exception = (Exception) httpServletRequest
                 .getAttribute("javax.servlet.error.exception");
+        
         String traceIdString = UuidUtil.getUUID();
         TraceId traceId = new TraceId(traceIdString);
         if (exception != null) {
-            logger.error("traceId:[" + traceId + "]" + exception.getMessage(), exception);
+            logger.error("traceId:[" + traceIdString + "]" + exception.getMessage(), exception);
         }
         ResultBean<TraceId> result = new ResultBean<TraceId>(errorCode, traceId);
         ajaxJson(response, result);

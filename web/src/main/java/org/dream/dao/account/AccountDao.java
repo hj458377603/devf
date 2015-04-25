@@ -12,4 +12,12 @@ import org.dream.bean.account.Account;
  */
 public interface AccountDao {
     Account queryByUserNameAndPwd(HashMap<String, Object> map);
+    
+    Account queryByEmail(HashMap<String, Object> map);
+
+    int add(Account account);
+    
+    int isExsit(HashMap<String, Object> map);
+    
+    int update(Account account);
 }

@@ -1,27 +1,35 @@
 package org.dream.bean.account;
 
+import java.util.Date;
+
+import com.google.gson.annotations.Expose;
+
 /**
  * @since 2015-04-15 16:06:02
  */
 
 public class Account {
+    @Expose
     private int     id;
 
-    private String  email;           // 用户名--email
+    @Expose
+    private String  email;          // 用户名--email
 
-    private String  nickName;        // 昵称
+    @Expose
+    private String  nickName;       // 昵称
 
-    private String  pwd;             // 密码（加密后保存）
+    private String  pwd;            // 密码（加密后保存）
 
-    private String  accessToken;     // 临时访问令牌（有效期一个月）
+    @Expose
+    private String  accessToken;    // 临时访问令牌（有效期一个月）
 
-    private boolean accountState;    // 账户状态：0:未激活;1:正常（已激活）;2:禁用
+    @Expose
+    private boolean accountState;   // 账户状态：0:未激活;1:正常（已激活）;2:禁用
 
-    private String  createTime;      // 创建时间
+    @Expose
+    private Date  createTime;     // 创建时间
 
-    private String  modifyTime;      // 最后修改时间
-
-    private int     modifyAccountId; // 修改人Id
+    private Date  modifyTime;     // 最后修改时间
 
     public int getId() {
         return this.id;
@@ -71,28 +79,20 @@ public class Account {
         this.accountState = accountState;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getModifyTime() {
+    public Date getModifyTime() {
         return this.modifyTime;
     }
 
-    public void setModifyTime(String modifyTime) {
+    public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    public int getModifyAccountId() {
-        return this.modifyAccountId;
-    }
-
-    public void setModifyAccountId(int modifyAccountId) {
-        this.modifyAccountId = modifyAccountId;
     }
 
 }

@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder;
  */
 public class BaseController {
     protected static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
+                                       .excludeFieldsWithoutExposeAnnotation().serializeNulls()
                                        .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     /**
@@ -35,7 +36,7 @@ public class BaseController {
      * @param type
      * @return
      */
-    private void ajaxJson(HttpServletResponse response, String content) {
+    public void ajaxJson(HttpServletResponse response, String content) {
         response.setContentType("text/plain;charset=UTF-8");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");

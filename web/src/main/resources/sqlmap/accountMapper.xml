@@ -6,10 +6,79 @@
 		resultType="org.dream.bean.account.Account">
 		SELECT
 		id,email,nickName,accessToken,accountState,createTime
-		FROM Account 
+		FROM Account
 		WHERE
-			email=#{email}
+		email=#{email}
 		AND
-			pwd=#{pwd}
+		pwd=#{pwd}
 	</select>
+
+	<select id="queryByEmail" parameterType="java.util.Map"
+		resultType="org.dream.bean.account.Account">
+		SELECT
+		id,
+		email,
+		nickName,
+		accountState,
+		createTime,
+		modifyTime
+		FROM
+		Account
+		WHERE
+		email=#{email}
+	</select>
+
+	<select id="isExsit" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT
+		Count(id)
+		FROM
+		Account
+		WHERE
+		email=#{email}
+	</select>
+
+	<insert id="add" parameterType="org.dream.bean.account.Account">
+		INSERT INTO
+		Account
+		(
+		email,
+		nickName,
+		pwd,
+		accessToken,
+		accountState,
+		createTime,
+		modifyTime
+		)
+		VALUES
+		(
+		#{email},
+		#{nickName},
+		#{pwd},
+		#{accessToken},
+		#{accountState},
+		#{createTime},
+		#{modifyTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="org.dream.bean.account.Account">
+		UPDATE
+		Account
+		<set>
+			<if test="nickName!=null">
+				nickName=#{nickName},
+			</if>
+			<if test="pwd!=null">
+				pwd=#{pwd},
+			</if>
+			<if test="accessToken!=null">
+				accessToken=#{accessToken},
+			</if>
+			<if test="modifyTime!=null">
+				modifyTime=#{modifyTime}
+			</if>
+		</set>
+		WHERE
+		email =#{email}
+	</update>
 </mapper>  

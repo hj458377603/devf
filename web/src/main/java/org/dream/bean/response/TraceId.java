@@ -1,6 +1,9 @@
 package org.dream.bean.response;
 
+import com.google.gson.annotations.Expose;
+
 public class TraceId {
+    @Expose
     private String traceId;
     
     public TraceId(String traceId){

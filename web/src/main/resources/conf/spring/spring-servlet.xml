@@ -24,8 +24,9 @@
 		<property name="targetMethod" value="registerValidator" />
 		<property name="arguments">
 			<list>
-				<ref local="emailValidator" />
-				<ref local="pwdValidator" />
+				<ref bean="emailValidator" />
+				<ref bean="pwdValidator" />
+				<ref bean="nicknameValidator" />
 			</list>
 		</property>
 	</bean>
