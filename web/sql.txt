@@ -1,18 +1,15 @@
-CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
 CREATE TABLE `Account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) DEFAULT NULL COMMENT '用户名--email',
-  `nickName` varchar(45) DEFAULT NULL COMMENT '昵称',
+  `nickName` varchar(20) DEFAULT NULL COMMENT '昵称',
   `pwd` varchar(45) DEFAULT NULL COMMENT '密码（加密后保存）',
   `accessToken` varchar(45) DEFAULT NULL COMMENT '临时访问令牌（有效期一个月）',
   `accountState` tinyint(3) DEFAULT NULL COMMENT '账户状态：\n0-未激活\n1-正常（已激活）\n2-禁用',
   `createTime` datetime DEFAULT NULL COMMENT '创建时间',
   `modifyTime` datetime DEFAULT NULL COMMENT '最后修改时间',
-  `modifyAccountId` int(11) DEFAULT NULL COMMENT '修改人Id',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
