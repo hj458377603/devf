@@ -9,16 +9,15 @@ import org.dream.web.intf.validator.rule.NotNullValidateRule;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PwdValidator extends AbstractValidator{
+public class PwdValidator extends AbstractValidator {
 
-    
     public DataType getSupportedType() {
         return DataType.PWD;
     }
-    
-    public PwdValidator(){
-        this.registerRule(new NotNullValidateRule(),ErrorCode.PARA_PWD_ERROR);
-        this.registerRule(new MaxLengthValidateRule(20), ErrorCode.PARA_PWD_ERROR);
-        this.registerRule(new MinLengthValidateRule(6), ErrorCode.PARA_PWD_ERROR);
+
+    public PwdValidator() {
+        this.registerRule(new NotNullValidateRule(), ErrorCode.PARA_PWD_ERROR);
+        this.registerRule(new MaxLengthValidateRule(32), ErrorCode.PARA_PWD_ERROR);
+        this.registerRule(new MinLengthValidateRule(32), ErrorCode.PARA_PWD_ERROR);
     }
 }
