@@ -1,14 +1,16 @@
 package org.dream.web.service.account;
 
+import java.io.InputStream;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dream.bean.account.Account;
-import org.dream.bean.constants.CommonConstants;
+import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.errorcode.ErrorCode;
 import org.dream.bean.exception.ParameterException;
 import org.dream.bean.response.ResultBean;
 import org.dream.intf.account.AccountService;
+import org.dream.intf.file.FileService;
 import org.dream.utils.cache.CacheUtils;
 import org.dream.web.intf.account.AccountEntryService;
 import org.dream.web.intf.validator.DataType;
@@ -24,6 +26,9 @@ public class AccountEntryServiceImpl implements AccountEntryService {
     @Autowired
     ValidatorService validatorService;
 
+    @Autowired
+    FileService      fileService;
+
     public ResultBean<String> login(String email, String pwd) {
         validatorService.validate(DataType.EMAIL, email);
         validatorService.validate(DataType.PWD, pwd);
@@ -33,7 +38,7 @@ public class AccountEntryServiceImpl implements AccountEntryService {
         }
 
         String token = UUID.randomUUID().toString();
-        CacheUtils.add(token, email, CommonConstants.CACHE_EXPIRE_MILI_SECONDS);
+        CacheUtils.add(token, email, ConfigConstants.CACHE_EXPIRE_MILI_SECONDS);
 
         return new ResultBean<String>(ErrorCode.SYSTEM_SUCCESS, token);
     }
@@ -66,7 +71,7 @@ public class AccountEntryServiceImpl implements AccountEntryService {
     public ResultBean<Object> update(Account account) {
         if (account != null) {
             validatorService.validate(DataType.EMAIL, account.getEmail());
-            
+
             if (!StringUtils.isEmpty(account.getNickName())) {
                 validatorService.validate(DataType.NICKNAME, account.getNickName());
             }
@@ -79,6 +84,24 @@ public class AccountEntryServiceImpl implements AccountEntryService {
             }
         } else {
             throw new ParameterException(ErrorCode.ACCOUNT_UPDATE_ERROR);
+        }
+        return new ResultBean<Object>(ErrorCode.SYSTEM_SUCCESS, null);
+    }
+
+    public ResultBean<String> updateHeadImg(String folder, InputStream inputstream, Account account) {
+        String fileUrl = fileService.uploadImg(folder, inputstream);// 上传图片
+        account.setImgUrl(fileUrl);
+        boolean res = accountService.update(account);// 更新数据库
+        if (!res) {
+            throw new ParameterException(ErrorCode.ACCOUNT_UPDATE_ERROR);
+        }
+        return new ResultBean<String>(ErrorCode.SYSTEM_SUCCESS, fileUrl);
+    }
+
+    public ResultBean<Object> logout(String accessToken) {
+        boolean res= accountService.logout(accessToken);
+        if (!res) {
+            throw new ParameterException(ErrorCode.ACCOUNT_LOGOUT_ERROR);
         }
         return new ResultBean<Object>(ErrorCode.SYSTEM_SUCCESS, null);
     }

@@ -61,4 +61,13 @@ public interface AccountService {
      * @since [产品/模块版本](可选)
      */
     boolean update(Account account);
+    
+    /**
+     * 注销账户
+     *
+     * @param accessToken
+     * @see [相关类/方法](可选)
+     * @since [产品/模块版本](可选)
+     */
+    boolean logout(String accessToken);
 }

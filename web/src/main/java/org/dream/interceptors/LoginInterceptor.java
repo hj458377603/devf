@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dream.bean.constants.CommonConstants;
+import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.errorcode.ErrorCode;
 import org.dream.bean.response.ResponseBean;
 import org.dream.bean.response.ResultBean;
@@ -31,12 +31,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
-        String token = request.getHeader(CommonConstants.ACCESS_TOKEN);
+        String token = request.getHeader(ConfigConstants.ACCESS_TOKEN);
         if (!StringUtils.isEmpty(token)) {
             Cache cache = CacheUtils.getCache(token);
             if (cache != null && cache.getValue() != null) {
-                request.setAttribute(CommonConstants.EMAIL_ATTRIBUTE, cache.getValue());
-                System.out.println(CommonConstants.EMAIL_ATTRIBUTE + "=========>"
+                request.setAttribute(ConfigConstants.EMAIL_ATTRIBUTE, cache.getValue());
+                System.out.println(ConfigConstants.EMAIL_ATTRIBUTE + "=========>"
                         + cache.getValue());
                 return true;
             }

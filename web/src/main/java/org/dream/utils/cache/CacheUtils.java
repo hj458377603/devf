@@ -34,13 +34,15 @@ public class CacheUtils {
      * 移除缓存
      * 
      * @param key
+     * @return
      * @see [相关类/方法](可选)
      * @since [产品/模块版本](可选)
      */
-    public synchronized static void remove(String key) {
+    public synchronized static boolean remove(String key) {
         if (cacheMap.containsKey(key)) {
-            cacheMap.remove(key);
+            return cacheMap.remove(key) == null ? false : true;
         }
+        return false;
     }
 
     /**

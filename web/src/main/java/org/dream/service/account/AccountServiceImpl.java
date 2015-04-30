@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.dream.bean.account.Account;
 import org.dream.dao.account.AccountDao;
 import org.dream.intf.account.AccountService;
+import org.dream.utils.cache.CacheUtils;
 import org.dream.utils.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,9 @@ public class AccountServiceImpl implements AccountService {
         }
         account.setModifyTime(new Date());
         return accountDao.update(account) == 1 ? true : false;
+    }
+
+    public boolean logout(String accessToken) {
+        return CacheUtils.remove(accessToken);
     }
 }

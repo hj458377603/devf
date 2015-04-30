@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.dream.bean.response.ResponseBean;
 import org.dream.bean.response.ResultBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,6 +20,7 @@ import com.google.gson.GsonBuilder;
  * @since [产品/模块版本] （可选）
  */
 public class BaseController {
+    private static Logger logger = LoggerFactory.getLogger(BaseController.class);
     protected static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
                                        .excludeFieldsWithoutExposeAnnotation().serializeNulls()
                                        .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
@@ -71,6 +74,7 @@ public class BaseController {
         }
 
         String result = gson.toJson(responseBean);
+        logger.debug("{}",result);
         ajaxJson(response, result);
     }
 }

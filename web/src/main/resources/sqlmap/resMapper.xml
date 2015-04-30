@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.res.ResDao">
+	<!-- resultType与resultMap的区别  -->
+	<select id="queryMyRes" parameterType="java.lang.String" resultType="org.dream.bean.res.CommonRes">
+		SELECT a.*,c.id,c.nickName,b.createTime,b.typeId
+		FROM
+		mydb.ImageRes a
+		inner join mydb.Res b
+		inner join mydb.Account c
+		ON
+		a.id=b.id
+		and
+		b.createAccountId=c.id
+		Where c.email=#{email}
+		union
+		SELECT
+		a.*,c.id,c.nickName,b.createTime,b.typeId
+		FROM mydb.TextRes a
+		inner join mydb.Res b
+		inner join mydb.Account c
+		ON
+		a.id=b.id
+		and
+		b.createAccountId=c.id
+		Where c.email=#{email};
+	</select>
+
+</mapper>  

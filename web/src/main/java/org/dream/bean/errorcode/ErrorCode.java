@@ -16,7 +16,9 @@ public enum ErrorCode {
     ACCOUNT_LOGIN_ERROR("10003","登录失败"),
     ACCOUNT_REGISTER_ERROR("10004","注册失败"),
     ACCOUNT_EMAIL_DUPLICATE_ERROR("10005","邮箱已经被注册"),
-    ACCOUNT_UPDATE_ERROR("10006","账户修改失败");
+    ACCOUNT_UPDATE_ERROR("10006","账户修改失败"),
+    ACCOUNT_LOGOUT_ERROR("10007","账户注销失败"),
+    ACCOUNT_MODIFY_IMG_ERROR("10008","修改头像失败");
     
     private String code;
 
