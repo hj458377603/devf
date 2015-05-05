@@ -1,5 +1,7 @@
 ﻿package org.dream.bean.res;
 
+import java.util.Date;
+
 import com.google.gson.annotations.Expose;
 
 /**
@@ -14,13 +16,13 @@ public class Res {
     @Expose
     private int     modifyAccountId; // 修改账户Id
     @Expose
-    private String  modifyTime;      // 修改时间
+    private Date  modifyTime;      // 修改时间
     @Expose
     private boolean isDelete;        // 是否被删除，0：未删除，1：删除
     @Expose
     private int     createAccountId; // 创建账户Id
     @Expose
-    private String  createTime;      // 创建时间
+    private Date  createTime;      // 创建时间
 
     public int getId() {
         return this.id;
@@ -46,11 +48,11 @@ public class Res {
         this.modifyAccountId = modifyAccountId;
     }
 
-    public String getModifyTime() {
+    public Date getModifyTime() {
         return this.modifyTime;
     }
 
-    public void setModifyTime(String modifyTime) {
+    public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
     }
 
@@ -70,11 +72,11 @@ public class Res {
         this.createAccountId = createAccountId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 

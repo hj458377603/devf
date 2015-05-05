@@ -3,6 +3,7 @@ package org.dream.intf.res;
 import java.util.List;
 
 import org.dream.bean.res.CommonRes;
+import org.dream.bean.res.Res;
 
 /**
  * 资源服务接口
@@ -13,4 +14,6 @@ import org.dream.bean.res.CommonRes;
  */
 public interface ResService {
     List<CommonRes> queryMyRes(String email);
+    
+    int add(Res res);
 }

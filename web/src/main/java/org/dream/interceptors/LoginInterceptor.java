@@ -35,8 +35,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (!StringUtils.isEmpty(token)) {
             Cache cache = CacheUtils.getCache(token);
             if (cache != null && cache.getValue() != null) {
-                request.setAttribute(ConfigConstants.EMAIL_ATTRIBUTE, cache.getValue());
-                System.out.println(ConfigConstants.EMAIL_ATTRIBUTE + "=========>"
+                request.setAttribute(ConfigConstants.ACCOUNT, cache.getValue());
+                System.out.println(ConfigConstants.ACCOUNT + "=========>"
                         + cache.getValue());
                 return true;
             }

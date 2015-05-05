@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.res.TextResDao">
+	<insert id="add" parameterType="org.dream.bean.res.TextRes">
+		INSERT INTO
+		TextRes(
+		id,
+		txtContent
+		)
+		VALUES(
+		#{id},
+		#{txtContent}
+		)
+	</insert>
+</mapper>  

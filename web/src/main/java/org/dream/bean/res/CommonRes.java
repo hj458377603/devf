@@ -1,5 +1,7 @@
 package org.dream.bean.res;
 
+import java.util.Date;
+
 import com.google.gson.annotations.Expose;
 
 /**
@@ -20,13 +22,13 @@ public class CommonRes {
     private int    createAccountId; // 创建账户Id
 
     @Expose
-    private String createTime;     // 创建时间
+    private Date   createTime;     // 创建时间
 
     @Expose
     private String nickName;       // 用户昵称
 
     @Expose
-    private String txtContent;      // 文本内容
+    private String txtContent;     // 文本内容
 
     /**
      * @return the id
@@ -73,14 +75,14 @@ public class CommonRes {
     /**
      * @return the createTime
      */
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
     /**
      * @param createTime the createTime to set
      */
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
@@ -111,6 +113,5 @@ public class CommonRes {
     public void setTxtContent(String txtContent) {
         this.txtContent = txtContent;
     }
-    
-    
+
 }

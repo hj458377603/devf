@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.exception.ParameterException;
+import org.dream.bean.res.CommonRes;
 import org.dream.bean.response.ResultBean;
-import org.dream.web.controller.account.AccountController;
 import org.dream.web.controller.base.BaseController;
 import org.dream.web.intf.res.ResEntryService;
 import org.slf4j.Logger;
@@ -29,17 +29,24 @@ public class ResController extends BaseController {
 
     @Autowired
     ResEntryService       resEntryService;
-    
+
     @RequestMapping("/private/getMyRes")
     public void getMyRes(HttpServletRequest request, HttpServletResponse response) {
         ResultBean<?> result = null;
-        String email = request.getAttribute(ConfigConstants.EMAIL_ATTRIBUTE).toString();
+        String email = request.getAttribute(ConfigConstants.ACCOUNT).toString();
         try {
             result = resEntryService.queryMyRes(email);
         } catch (ParameterException e) {
             result = new ResultBean<Object>(e.getError(), null);
             logger.debug("failed:" + e.getError().getMsg());
         }
+        ajaxJson(response, result);
+    }
+
+    @RequestMapping("/add")
+    public void add(CommonRes commonRes, HttpServletRequest request, HttpServletResponse response) {
+        ResultBean<?> result = null;
+        result = resEntryService.addTextRes(commonRes);
         ajaxJson(response, result);
     }
 }

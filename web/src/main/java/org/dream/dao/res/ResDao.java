@@ -3,6 +3,7 @@ package org.dream.dao.res;
 import java.util.List;
 
 import org.dream.bean.res.CommonRes;
+import org.dream.bean.res.Res;
 
 /**
  * 资源数据访问对象
@@ -13,4 +14,6 @@ import org.dream.bean.res.CommonRes;
  */
 public interface ResDao {
     List<CommonRes> queryMyRes(String email);
+    
+    int add(Res res);
 }

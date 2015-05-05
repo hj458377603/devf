@@ -68,7 +68,7 @@ public class AccountController extends BaseController {
      */
     @RequestMapping(value = "/private/getAccountInfo")
     public void getAccountInfo(HttpServletRequest request, HttpServletResponse response) {
-        String email = request.getAttribute(ConfigConstants.EMAIL_ATTRIBUTE).toString();
+        String email = request.getAttribute(ConfigConstants.ACCOUNT).toString();
         ResultBean<?> result = null;
         try {
             result = accountEntryService.getAccountInfo(email);
@@ -116,7 +116,7 @@ public class AccountController extends BaseController {
     public void updateAccount(Account account, HttpServletRequest request,
             HttpServletResponse response) {
         ResultBean<?> result = null;
-        String email = (String) request.getAttribute(ConfigConstants.EMAIL_ATTRIBUTE);
+        String email = (String) request.getAttribute(ConfigConstants.ACCOUNT);
         account.setEmail(email);
         try {
             result = accountEntryService.update(account);
@@ -141,7 +141,7 @@ public class AccountController extends BaseController {
     @RequestMapping("/private/modifyHeadImg")
     public void modifyHeadImg(Account account, HttpServletRequest request,
             HttpServletResponse response) {
-        String email = (String) request.getAttribute(ConfigConstants.EMAIL_ATTRIBUTE);
+        String email = (String) request.getAttribute(ConfigConstants.ACCOUNT);
         account.setEmail(email);
         ResultBean<?> result = null;
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;

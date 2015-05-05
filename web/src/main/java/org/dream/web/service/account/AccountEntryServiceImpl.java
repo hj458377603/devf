@@ -38,7 +38,7 @@ public class AccountEntryServiceImpl implements AccountEntryService {
         }
 
         String token = UUID.randomUUID().toString();
-        CacheUtils.add(token, email, ConfigConstants.CACHE_EXPIRE_MILI_SECONDS);
+        CacheUtils.add(token, account, ConfigConstants.CACHE_EXPIRE_MILI_SECONDS);
 
         return new ResultBean<String>(ErrorCode.SYSTEM_SUCCESS, token);
     }

@@ -3,6 +3,7 @@ CREATE TABLE `Account` (
   `email` varchar(45) DEFAULT NULL COMMENT '用户名--email',
   `nickName` varchar(20) DEFAULT NULL COMMENT '昵称',
   `pwd` varchar(32) DEFAULT NULL COMMENT '密码（加密后保存）',
+  `imgUrl` varchar(128) DEFAULT NULL,
   `accessToken` varchar(45) DEFAULT NULL COMMENT '临时访问令牌（有效期一个月）',
   `accountState` tinyint(3) DEFAULT NULL COMMENT '账户状态：\n0-未激活\n1-正常（已激活）\n2-禁用',
   `createTime` datetime DEFAULT NULL COMMENT '创建时间',
@@ -25,12 +26,8 @@ CREATE TABLE `Comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `ImageRes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `txtContent` varchar(140) DEFAULT NULL COMMENT '文字内容，140字以内',
-  `createAccountId` int(11) DEFAULT NULL COMMENT '创建人Id',
-  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
-  `modifyAccountId` int(11) DEFAULT NULL COMMENT '修改人Id',
-  `modifyTime` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,10 +36,10 @@ CREATE TABLE `ImageResItem` (
   `imageResId` int(11) DEFAULT NULL COMMENT '图片资源Id(相册Id)',
   `imageItemUrl` varchar(256) DEFAULT NULL COMMENT '图片地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Res` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `typeId` tinyint(3) DEFAULT NULL COMMENT '资源类别：1、文字，2、图文',
   `modifyAccountId` int(11) DEFAULT NULL COMMENT '修改账户Id',
   `modifyTime` datetime DEFAULT NULL COMMENT '修改时间',
@@ -50,7 +47,7 @@ CREATE TABLE `Res` (
   `createAccountId` int(11) DEFAULT NULL COMMENT '创建账户Id',
   `createTime` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `ResLike` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -60,7 +57,7 @@ CREATE TABLE `ResLike` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `TextRes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `txtContent` varchar(140) DEFAULT NULL COMMENT '文字内容，长度限制140',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

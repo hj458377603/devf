@@ -3,6 +3,7 @@ package org.dream.service.res;
 import java.util.List;
 
 import org.dream.bean.res.CommonRes;
+import org.dream.bean.res.Res;
 import org.dream.dao.res.ResDao;
 import org.dream.intf.res.ResService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class ResServiceImpl implements ResService{
     
     public List<CommonRes> queryMyRes(String email) {
         return resDao.queryMyRes(email);
+    }
+
+    public int add(Res res) {
+        return resDao.add(res);
     }
 
 }

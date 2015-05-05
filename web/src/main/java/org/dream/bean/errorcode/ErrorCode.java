@@ -10,6 +10,7 @@ public enum ErrorCode {
     PARA_EMAIL_ERROR("PARA_0001", "Email格式不正确"),
     PARA_PWD_ERROR("PARA_0002", "密码格式不正确"),
     PARA_NICKNAME_ERROR("PARA_0003","昵称格式不正确"),
+    PARA_TYPEID_ERROR("PARA_0004","TypeId参数错误"),
     
     
     ACCOUNT_UNAUTHORIZED_ERROR("10000","未登录"),

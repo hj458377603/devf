@@ -4,5 +4,6 @@ public enum DataType {
     PHONE,
     EMAIL,
     NICKNAME,
-    PWD
+    PWD,
+    TYPEID
 }

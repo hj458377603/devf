@@ -6,5 +6,7 @@
 	<mappers>
 		<mapper resource="sqlmap/accountMapper.xml" />
 		<mapper resource="sqlmap/resMapper.xml" />
+		<mapper resource="sqlmap/textResMapper.xml" />
+		<mapper resource="sqlmap/imageResMapper.xml" />
 	</mappers>
 </configuration>  
