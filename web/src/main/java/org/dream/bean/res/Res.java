@@ -11,18 +11,24 @@ import com.google.gson.annotations.Expose;
 public class Res {
     @Expose
     private int     id;
+
     @Expose
-    private int typeId;          // 资源类别：1、文字，2、图文
+    private int     typeId;         // 资源类别：1、文字，2、图文
+
     @Expose
     private int     modifyAccountId; // 修改账户Id
+
     @Expose
-    private Date  modifyTime;      // 修改时间
+    private Date    modifyTime;     // 修改时间
+
     @Expose
-    private boolean isDelete;        // 是否被删除，0：未删除，1：删除
+    private boolean isDelete;       // 是否被删除，0：未删除，1：删除
+
     @Expose
     private int     createAccountId; // 创建账户Id
+
     @Expose
-    private Date  createTime;      // 创建时间
+    private Date    createTime;     // 创建时间
 
     public int getId() {
         return this.id;
@@ -30,14 +36,6 @@ public class Res {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int typeId() {
-        return this.typeId;
-    }
-
-    public void typeId(int typeId) {
-        this.typeId = typeId;
     }
 
     public int getModifyAccountId() {
@@ -56,14 +54,6 @@ public class Res {
         this.modifyTime = modifyTime;
     }
 
-    public boolean isDelete() {
-        return this.isDelete;
-    }
-
-    public void isDelete(boolean isDelete) {
-        this.isDelete = isDelete;
-    }
-
     public int getCreateAccountId() {
         return this.createAccountId;
     }
@@ -78,6 +68,34 @@ public class Res {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    /**
+     * @return the typeId
+     */
+    public int getTypeId() {
+        return typeId;
+    }
+
+    /**
+     * @param typeId the typeId to set
+     */
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    /**
+     * @param isDelete the isDelete to set
+     */
+    public void setDelete(boolean isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    /**
+     * @return the isDelete
+     */
+    public boolean isDelete() {
+        return isDelete;
     }
 
 }

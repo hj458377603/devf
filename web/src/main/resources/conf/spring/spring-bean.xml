@@ -1,29 +1,41 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
-    
+    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
+
 	<!-- 指定自动扫描路径 -->
 	<context:component-scan base-package="org.dream"></context:component-scan>
+
+	<!-- 属性文件读入 -->
+	<bean id="propertyConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:conf/db.properties</value>
+			</list>
+		</property>
+	</bean>
 
 	<!-- 配置数据源 -->
 	<bean id="jdbcDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>org.gjt.mm.mysql.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost:3306/mydb?useUnicode=true&amp;characterEncoding=UTF-8
-			</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>123123</value>
-		</property>
+		<property name="driverClassName" value="${jdbc.driverClass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
+
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="jdbcDataSource" />
+	</bean>
+
+	<!-- 开启事务注解驱动,若名称为'transactionManager'，可省略 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="jdbcDataSource" />
 		<property name="configLocation" value="classpath:conf/mybatis-config.xml"></property>

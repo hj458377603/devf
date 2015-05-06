@@ -3,9 +3,10 @@ package org.dream.web.controller.res;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.dream.bean.account.Account;
 import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.exception.ParameterException;
-import org.dream.bean.res.CommonRes;
+import org.dream.bean.res.request.ResBeanReq;
 import org.dream.bean.response.ResultBean;
 import org.dream.web.controller.base.BaseController;
 import org.dream.web.intf.res.ResEntryService;
@@ -33,9 +34,9 @@ public class ResController extends BaseController {
     @RequestMapping("/private/getMyRes")
     public void getMyRes(HttpServletRequest request, HttpServletResponse response) {
         ResultBean<?> result = null;
-        String email = request.getAttribute(ConfigConstants.ACCOUNT).toString();
+        Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
         try {
-            result = resEntryService.queryMyRes(email);
+            result = resEntryService.queryMyRes(account.getEmail());
         } catch (ParameterException e) {
             result = new ResultBean<Object>(e.getError(), null);
             logger.debug("failed:" + e.getError().getMsg());
@@ -43,10 +44,33 @@ public class ResController extends BaseController {
         ajaxJson(response, result);
     }
 
-    @RequestMapping("/add")
-    public void add(CommonRes commonRes, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/private/addTextRes")
+    public void addTextRes(ResBeanReq resBeanReq, HttpServletRequest request,
+            HttpServletResponse response) {
         ResultBean<?> result = null;
-        result = resEntryService.addTextRes(commonRes);
+        Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
+        try {
+            // 获取账号
+            result = resEntryService.addTextRes(resBeanReq, account.getId());
+        } catch (ParameterException e) {
+            result = new ResultBean<Object>(e.getError(), null);
+            logger.debug("failed:" + e.getError().getMsg());
+        }
+        ajaxJson(response, result);
+    }
+
+    @RequestMapping("/private/addImageRes")
+    public void addImageRes(ResBeanReq resBeanReq, HttpServletRequest request,
+            HttpServletResponse response) {
+        ResultBean<?> result = null;
+        Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
+        // 获取账号
+        try {
+            result = resEntryService.addImageRes(resBeanReq, account.getId());
+        } catch (ParameterException e) {
+            result = new ResultBean<Object>(e.getError(), null);
+            logger.debug("failed:" + e.getError().getMsg());
+        }
         ajaxJson(response, result);
     }
 }

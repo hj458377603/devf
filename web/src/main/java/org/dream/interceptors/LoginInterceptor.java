@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.dream.bean.account.Account;
 import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.errorcode.ErrorCode;
 import org.dream.bean.response.ResponseBean;
@@ -26,7 +27,7 @@ import com.google.gson.GsonBuilder;
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     private static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-                                     .excludeFieldsWithoutExposeAnnotation().serializeNulls()
+                                     .excludeFieldsWithoutExposeAnnotation()
                                      .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
@@ -34,10 +35,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         String token = request.getHeader(ConfigConstants.ACCESS_TOKEN);
         if (!StringUtils.isEmpty(token)) {
             Cache cache = CacheUtils.getCache(token);
-            if (cache != null && cache.getValue() != null) {
+            // 防止修改Account字段，导致Account转换失败
+            if (cache != null && cache.getValue() != null && cache.getValue() instanceof Account) {
                 request.setAttribute(ConfigConstants.ACCOUNT, cache.getValue());
-                System.out.println(ConfigConstants.ACCOUNT + "=========>"
-                        + cache.getValue());
+                System.out.println(ConfigConstants.ACCOUNT + "=========>" + cache.getValue());
                 return true;
             }
         }
@@ -49,7 +50,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     }
 
     private void ajaxJson(HttpServletResponse response, String content) {
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json;charset=utf-8");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);

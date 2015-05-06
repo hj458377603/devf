@@ -3,6 +3,7 @@ package org.dream.web.intf.res;
 import java.util.List;
 
 import org.dream.bean.res.CommonRes;
+import org.dream.bean.res.request.ResBeanReq;
 import org.dream.bean.response.ResultBean;
 
 /**
@@ -24,12 +25,25 @@ public interface ResEntryService {
     ResultBean<List<CommonRes>> queryMyRes(String email);
 
     /**
-     * 增加资源
-     * 
-     * @param res
+     * 增加文本资源
+     *
+     * @param resBeanReq
+     * @param accountId
      * @return
      * @see [相关类/方法](可选)
      * @since [产品/模块版本](可选)
      */
-    ResultBean<Integer> addTextRes(CommonRes commonRes);
+    ResultBean<Object> addTextRes(ResBeanReq resBeanReq, int accountId);
+
+    /**
+     * 增加图片资源
+     *
+     * @param resBeanReq
+     * @param accountId
+     * @return
+     * @see [相关类/方法](可选)
+     * @since [产品/模块版本](可选)
+     */
+    ResultBean<Object> addImageRes(ResBeanReq resBeanReq, int accountId);
+
 }

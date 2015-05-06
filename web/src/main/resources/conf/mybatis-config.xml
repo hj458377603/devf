@@ -8,5 +8,6 @@
 		<mapper resource="sqlmap/resMapper.xml" />
 		<mapper resource="sqlmap/textResMapper.xml" />
 		<mapper resource="sqlmap/imageResMapper.xml" />
+		<mapper resource="sqlmap/imageResItemMapper.xml" />
 	</mappers>
 </configuration>  

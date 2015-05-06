@@ -11,7 +11,8 @@ public enum ErrorCode {
     PARA_PWD_ERROR("PARA_0002", "密码格式不正确"),
     PARA_NICKNAME_ERROR("PARA_0003","昵称格式不正确"),
     PARA_TYPEID_ERROR("PARA_0004","TypeId参数错误"),
-    
+    PARA_IMAGEURL_ERROR("PARA_0005","图片地址参数不正确"),
+    PARA_TEXTCONTENT_ERROR("PARA_0006","文本内容参数不正确"),    
     
     ACCOUNT_UNAUTHORIZED_ERROR("10000","未登录"),
     ACCOUNT_LOGIN_ERROR("10003","登录失败"),

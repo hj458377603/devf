@@ -68,10 +68,10 @@ public class AccountController extends BaseController {
      */
     @RequestMapping(value = "/private/getAccountInfo")
     public void getAccountInfo(HttpServletRequest request, HttpServletResponse response) {
-        String email = request.getAttribute(ConfigConstants.ACCOUNT).toString();
+        Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
         ResultBean<?> result = null;
         try {
-            result = accountEntryService.getAccountInfo(email);
+            result = accountEntryService.getAccountInfo(account.getEmail());
         } catch (ParameterException e) {
             result = new ResultBean<Object>(e.getError(), null);
             logger.debug("failed:" + e.getError().getMsg());

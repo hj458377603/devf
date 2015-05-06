@@ -2,15 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.dream.dao.res.ImageResDao">
-	<insert id="add" parameterType="org.dream.bean.res.ImageRes">
+	<insert id="add" parameterType="org.dream.bean.res.ImageRes"
+		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 		ImageRes(
-		imageResId,
-		imageItemUrl
+			id,
+			txtContent
 		)
 		VALUES(
-		#{imageResId},
-		#{imageItemUrl}
+			#{id},
+			#{txtContent}
 		)
 	</insert>
 </mapper>

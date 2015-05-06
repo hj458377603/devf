@@ -21,9 +21,10 @@ import com.google.gson.GsonBuilder;
  */
 public class BaseController {
     private static Logger logger = LoggerFactory.getLogger(BaseController.class);
-    protected static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
-                                       .excludeFieldsWithoutExposeAnnotation().serializeNulls()
-                                       .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+
+    protected static Gson gson   = new GsonBuilder().enableComplexMapKeySerialization()
+                                         .excludeFieldsWithoutExposeAnnotation()
+                                         .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     /**
      * 功能描述：根据Object输出JSON字符串
@@ -40,7 +41,7 @@ public class BaseController {
      * @return
      */
     public void ajaxJson(HttpServletResponse response, String content) {
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
@@ -74,7 +75,7 @@ public class BaseController {
         }
 
         String result = gson.toJson(responseBean);
-        logger.debug("{}",result);
+        logger.debug("{}", result);
         ajaxJson(response, result);
     }
 }

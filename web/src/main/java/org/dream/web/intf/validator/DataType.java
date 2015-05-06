@@ -5,5 +5,7 @@ public enum DataType {
     EMAIL,
     NICKNAME,
     PWD,
-    TYPEID
+    TYPEID,
+    IMAGEURLS,
+    TEXTCONTENT
 }

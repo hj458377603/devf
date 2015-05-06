@@ -1,6 +1,7 @@
 package org.dream.bean.res;
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
@@ -13,22 +14,25 @@ import com.google.gson.annotations.Expose;
  */
 public class CommonRes {
     @Expose
-    private int    id;
+    private int          id;
 
     @Expose
-    private int    typeId;         // 资源类别：1、文字，2、图文
+    private int          typeId;         // 资源类别：1、文字，2、图文
 
     @Expose
-    private int    createAccountId; // 创建账户Id
+    private int          createAccountId; // 创建账户Id
 
     @Expose
-    private Date   createTime;     // 创建时间
+    private Date         createTime;     // 创建时间
 
     @Expose
-    private String nickName;       // 用户昵称
+    private String       nickName;       // 用户昵称
 
     @Expose
-    private String txtContent;     // 文本内容
+    private String       txtContent;     // 文本内容
+
+    @Expose
+    private List<String> imageResItems;  // 图片列表
 
     /**
      * @return the id
@@ -114,4 +118,17 @@ public class CommonRes {
         this.txtContent = txtContent;
     }
 
+    /**
+     * @return the imageResItems
+     */
+    public List<String> getImageResItems() {
+        return imageResItems;
+    }
+
+    /**
+     * @param imageResItems the imageResItems to set
+     */
+    public void setImageResItems(List<String> imageResItems) {
+        this.imageResItems = imageResItems;
+    }
 }

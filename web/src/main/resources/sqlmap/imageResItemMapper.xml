@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.res.ImageResItemDao">
+	<insert id="add" parameterType="org.dream.bean.res.ImageResItem"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+		ImageResItem(
+		imageResId,
+		imageItemUrl
+		)
+		VALUES(
+		#{imageResId},
+		#{imageItemUrl}
+		)
+	</insert>
+
+	<select id="queryListByImageResId" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT imageItemUrl
+		FROM mydb.ImageResItem
+		WHERE imageResId=#{imageResId}
+	</select>
+</mapper>

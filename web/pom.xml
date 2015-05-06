@@ -81,6 +81,12 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.2</version>
 		</dependency>
+		<!-- 连接mysql，testng报Could not load JDBC driver class [com.mysql.jdbc.Driver] -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.34</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>web</finalName>
