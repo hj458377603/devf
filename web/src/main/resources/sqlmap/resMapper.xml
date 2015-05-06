@@ -5,7 +5,7 @@
 	<!-- resultType与resultMap的区别 -->
 	<select id="queryMyRes" parameterType="java.lang.String"
 		resultType="org.dream.bean.res.CommonRes">
-		SELECT a.*,b.createAccountId,c.nickName,b.createTime,b.typeId
+		SELECT a.*,b.createAccountId,c.nickName,c.imgUrl,b.createTime,b.typeId
 		FROM
 		mydb.ImageRes a
 		inner join mydb.Res b
@@ -17,7 +17,7 @@
 		Where c.email=#{email}
 		union
 		SELECT
-		a.*,c.id,c.nickName,b.createTime,b.typeId
+		a.*,c.id,c.nickName,c.imgUrl,b.createTime,b.typeId
 		FROM mydb.TextRes a
 		inner join
 		mydb.Res b

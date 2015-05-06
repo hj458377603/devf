@@ -29,6 +29,9 @@ public class CommonRes {
     private String       nickName;       // 用户昵称
 
     @Expose
+    private String       imgUrl;          // 头像图片
+
+    @Expose
     private String       txtContent;     // 文本内容
 
     @Expose
@@ -131,4 +134,20 @@ public class CommonRes {
     public void setImageResItems(List<String> imageResItems) {
         this.imageResItems = imageResItems;
     }
+
+    /**
+     * @return the imgUrl
+     */
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    /**
+     * @param imgUrl the imgUrl to set
+     */
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+    
+    
 }
