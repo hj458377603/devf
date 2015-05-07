@@ -3,6 +3,9 @@ package org.dream.bean.res;
 import java.util.Date;
 import java.util.List;
 
+import org.dream.bean.comment.response.CommentResp;
+import org.dream.bean.res.response.ResLikeResp;
+
 import com.google.gson.annotations.Expose;
 
 /**
@@ -14,28 +17,34 @@ import com.google.gson.annotations.Expose;
  */
 public class CommonRes {
     @Expose
-    private int          id;
+    private int               id;
 
     @Expose
-    private int          typeId;         // 资源类别：1、文字，2、图文
+    private int               typeId;         // 资源类别：1、文字，2、图文
 
     @Expose
-    private int          createAccountId; // 创建账户Id
+    private int               createAccountId; // 创建账户Id
 
     @Expose
-    private Date         createTime;     // 创建时间
+    private Date              createTime;     // 创建时间
 
     @Expose
-    private String       nickName;       // 用户昵称
+    private String            nickName;       // 用户昵称
 
     @Expose
-    private String       imgUrl;          // 头像图片
+    private String            imgUrl;         // 头像图片
 
     @Expose
-    private String       txtContent;     // 文本内容
+    private String            txtContent;     // 文本内容
 
     @Expose
-    private List<String> imageResItems;  // 图片列表
+    private List<String>      imageResItems;  // 图片列表
+
+    @Expose
+    private List<ResLikeResp> resLikeList;    // 点赞者列表
+
+    @Expose
+    private List<CommentResp> commentRespList; // 评论列表
 
     /**
      * @return the id
@@ -148,6 +157,33 @@ public class CommonRes {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-    
-    
+
+    /**
+     * @return the resLikeList
+     */
+    public List<ResLikeResp> getResLikeList() {
+        return resLikeList;
+    }
+
+    /**
+     * @param resLikeList the resLikeList to set
+     */
+    public void setResLikeList(List<ResLikeResp> resLikeList) {
+        this.resLikeList = resLikeList;
+    }
+
+    /**
+     * @return the commentRespList
+     */
+    public List<CommentResp> getCommentRespList() {
+        return commentRespList;
+    }
+
+    /**
+     * @param commentRespList the commentRespList to set
+     */
+    public void setCommentRespList(List<CommentResp> commentRespList) {
+        this.commentRespList = commentRespList;
+    }
+
 }

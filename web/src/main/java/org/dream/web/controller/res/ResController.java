@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.dream.bean.account.Account;
 import org.dream.bean.constants.ConfigConstants;
 import org.dream.bean.exception.ParameterException;
-import org.dream.bean.res.request.ResBeanReq;
+import org.dream.bean.res.request.ResReq;
 import org.dream.bean.response.ResultBean;
 import org.dream.web.controller.base.BaseController;
 import org.dream.web.intf.res.ResEntryService;
@@ -45,7 +45,7 @@ public class ResController extends BaseController {
     }
 
     @RequestMapping("/private/addTextRes")
-    public void addTextRes(ResBeanReq resBeanReq, HttpServletRequest request,
+    public void addTextRes(ResReq resBeanReq, HttpServletRequest request,
             HttpServletResponse response) {
         ResultBean<?> result = null;
         Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
@@ -60,13 +60,30 @@ public class ResController extends BaseController {
     }
 
     @RequestMapping("/private/addImageRes")
-    public void addImageRes(ResBeanReq resBeanReq, HttpServletRequest request,
+    public void addImageRes(ResReq resBeanReq, HttpServletRequest request,
             HttpServletResponse response) {
         ResultBean<?> result = null;
         Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
         // 获取账号
         try {
             result = resEntryService.addImageRes(resBeanReq, account.getId());
+        } catch (ParameterException e) {
+            result = new ResultBean<Object>(e.getError(), null);
+            logger.debug("failed:" + e.getError().getMsg());
+        }
+        ajaxJson(response, result);
+    }
+
+    @RequestMapping("/private/addResLike")
+    public void addResLike(Integer resId, HttpServletRequest request, HttpServletResponse response) {
+        ResultBean<?> result = null;
+        Account account = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
+        if (resId == null) {
+            resId = 0;
+        }
+        // 获取账号
+        try {
+            result = resEntryService.addResLike(resId, account.getId());
         } catch (ParameterException e) {
             result = new ResultBean<Object>(e.getError(), null);
             logger.debug("failed:" + e.getError().getMsg());

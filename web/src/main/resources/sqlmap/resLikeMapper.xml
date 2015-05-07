@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.res.ResLikeDao">
+	<insert id="add" parameterType="org.dream.bean.res.ResLike">
+		INSERT INTO
+		ResLike(
+			resId,
+			accountId
+		)
+		VALUES(
+			#{resId},
+			#{accountId}
+		)
+	</insert>
+	
+	<select id="hasLike" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(id) 
+		FROM 
+			mydb.ResLike 
+		WHERE 
+			accountId=#{accountId} 
+		AND 
+			resId=#{resId};
+	</select>
+	
+	<select id="queryList" parameterType="java.lang.Integer" resultType="org.dream.bean.res.response.ResLikeResp">
+		SELECT 
+			a.accountId,b.nickName,b.imgUrl
+		FROM 
+			mydb.ResLike a
+		INNER JOIN
+			mydb.Account b
+		ON
+			a.accountId=b.id
+		Where 
+			a.resId=#{resId};
+	</select>
+</mapper>  

@@ -7,5 +7,6 @@ public enum DataType {
     PWD,
     TYPEID,
     IMAGEURLS,
-    TEXTCONTENT
+    TEXTCONTENT,
+    COMMENT
 }

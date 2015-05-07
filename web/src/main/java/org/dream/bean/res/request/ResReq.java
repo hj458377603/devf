@@ -7,7 +7,7 @@ package org.dream.bean.res.request;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ResBeanReq {
+public class ResReq {
     private String txtContent; // 文本内容
 
     private String imageUrls; // 图片列表

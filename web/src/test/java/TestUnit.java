@@ -1,7 +1,7 @@
 import java.util.List;
 
 import org.dream.bean.res.CommonRes;
-import org.dream.bean.res.request.ResBeanReq;
+import org.dream.bean.res.request.ResReq;
 import org.dream.bean.response.ResultBean;
 import org.dream.intf.res.ResService;
 import org.dream.web.intf.res.ResEntryService;
@@ -26,7 +26,7 @@ public class TestUnit extends AbstractTestNGSpringContextTests {
 
     @Test
     public void publishImageRes() {
-        ResBeanReq resBeanReq = new ResBeanReq();
+        ResReq resBeanReq = new ResReq();
         resBeanReq.setTxtContent("ceshi2");
         resBeanReq.setImageUrls("http://www.baidu.com,http://www.taobao.com");
         ResultBean<Object> obj = resEntryService.addImageRes(resBeanReq, 16);

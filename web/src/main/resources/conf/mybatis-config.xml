@@ -9,5 +9,7 @@
 		<mapper resource="sqlmap/textResMapper.xml" />
 		<mapper resource="sqlmap/imageResMapper.xml" />
 		<mapper resource="sqlmap/imageResItemMapper.xml" />
+		<mapper resource="sqlmap/resLikeMapper.xml" />
+		<mapper resource="sqlmap/commentMapper.xml" />
 	</mappers>
 </configuration>  

@@ -1,5 +1,7 @@
 package org.dream.bean.comment;
 
+import java.util.Date;
+
 /**
  * @since 2015-04-15 16:06:02
  */
@@ -15,11 +17,7 @@ public class Comment {
 
     private int     createAccountId; // 评论者账户Id
 
-    private String  createTime;      // 创建时间
-
-    private int     modifyAccountId; // 修改账户Id
-
-    private String  modifyTime;      // 修改时间
+    private Date    createTime;      // 创建时间
 
     private boolean isDelete;        // 是否已删除，0:未删除，1：删除
 
@@ -63,28 +61,12 @@ public class Comment {
         this.createAccountId = createAccountId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public int getModifyAccountId() {
-        return this.modifyAccountId;
-    }
-
-    public void setModifyAccountId(int modifyAccountId) {
-        this.modifyAccountId = modifyAccountId;
-    }
-
-    public String getModifyTime() {
-        return this.modifyTime;
-    }
-
-    public void setModifyTime(String modifyTime) {
-        this.modifyTime = modifyTime;
     }
 
     public boolean isDelete() {

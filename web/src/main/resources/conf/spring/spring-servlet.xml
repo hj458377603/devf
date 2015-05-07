@@ -41,6 +41,7 @@
 				<ref bean="nicknameValidator" />
 				<ref bean="imageUrlsValidator" />
 				<ref bean="txtContentValidator" />
+				<ref bean="commentValidator" />
 			</list>
 		</property>
 	</bean>

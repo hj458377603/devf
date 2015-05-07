@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dream.dao.comment.CommentDao">
+	<insert id="add" parameterType="org.dream.bean.comment.Comment">
+		INSERT INTO
+		mydb.Comment
+		(
+			resId,
+			replyToAccountId,
+			commentContent,
+			createAccountId,
+			createTime,
+			isDelete
+		)
+		VALUES
+		(
+			#{resId},
+			#{replyToAccountId},
+			#{commentContent},
+			#{createAccountId},
+			#{createTime},
+			#{isDelete}
+		)
+	</insert>
+	<select id="queryList" parameterType="java.lang.Integer"
+		resultType="org.dream.bean.comment.response.CommentResp">
+		SELECT
+			a.id,
+			a.replyToAccountId,
+			c.nickName replyToNickName,
+			a.commentContent,
+			a.createAccountId,
+			a.createTime,
+			b.nickName,
+			b.imgUrl
+		FROM
+			mydb.Comment a
+		INNER JOIN
+			mydb.Account b
+		INNER JOIN
+			mydb.Account c
+		ON
+			a.createAccountId=b.id
+		AND
+			a.replyToAccountId=c.id
+		WHERE
+			a.resId=#{resId}
+	</select>
+</mapper>  

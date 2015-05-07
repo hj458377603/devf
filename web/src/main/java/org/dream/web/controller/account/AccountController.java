@@ -116,8 +116,8 @@ public class AccountController extends BaseController {
     public void updateAccount(Account account, HttpServletRequest request,
             HttpServletResponse response) {
         ResultBean<?> result = null;
-        String email = (String) request.getAttribute(ConfigConstants.ACCOUNT);
-        account.setEmail(email);
+        Account tempAccount = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
+        account.setEmail(tempAccount.getEmail());
         try {
             result = accountEntryService.update(account);
         } catch (ParameterException e) {
