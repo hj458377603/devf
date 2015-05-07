@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="alpha_black">#B0000000</color>
+    <color name="txt_hint_gray">#aaaaaa</color>
+
+    <color name="bg">#ededed</color>
+
+    <color name="fragment_login_btn">#00CCFF</color>
+    <color name="fragment_login_btn_focus">#00BBFF</color>
+</resources>
