@@ -33,6 +33,7 @@
                 android:hint="注册邮箱"
                 android:textColor="@color/black"
                 android:textColorHint="@color/txt_hint_gray"
+                android:text="458377603@qq.com"
                 android:id="@+id/txt_fragment_login_email"/>
         </LinearLayout>
         <ImageView
@@ -62,6 +63,7 @@
                 android:password="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/txt_hint_gray"
+                android:text="1"
                 android:id="@+id/txt_fragment_login_pwd"/>
         </LinearLayout>
     </LinearLayout>
