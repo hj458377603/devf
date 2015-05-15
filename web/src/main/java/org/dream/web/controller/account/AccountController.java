@@ -141,8 +141,8 @@ public class AccountController extends BaseController {
     @RequestMapping("/private/modifyHeadImg")
     public void modifyHeadImg(Account account, HttpServletRequest request,
             HttpServletResponse response) {
-        String email = (String) request.getAttribute(ConfigConstants.ACCOUNT);
-        account.setEmail(email);
+        Account tempAccount = (Account) request.getAttribute(ConfigConstants.ACCOUNT);
+        account.setEmail(tempAccount.getEmail());
         ResultBean<?> result = null;
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile multipartFile = multipartRequest.getFile("file");// 获得文件

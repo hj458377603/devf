@@ -17,4 +17,6 @@ public class ServiceUrlConfig {
     public static final String ACCOUNT_LOGOUT_URL=SERVER_URL+"account/private/logout";
 
     public static final String IMG_URL=SERVER_URL+"img/";
+
+    public static final String RES_GET_MY_RES_URL=SERVER_URL+"res/private/getMyRes";
 }

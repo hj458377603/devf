@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:baselineAligned="true">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tabbar_home" />
+
+        <TextView
+            android:id="@+id/txt_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/home"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_message"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tabbar_message_center" />
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/message"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/fragment_login_btn"
+        android:layout_margin="6dp">
+
+        <ImageView
+            android:id="@+id/img_add"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tabbar_compose_icon_add"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_discover"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tabbar_discover" />
+
+        <TextView
+            android:id="@+id/txt_discover"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/discover"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tabbar_profile" />
+
+        <TextView
+            android:id="@+id/txt_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/profile"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</LinearLayout>

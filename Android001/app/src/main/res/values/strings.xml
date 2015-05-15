@@ -8,5 +8,8 @@
     <string name="sign_up">注册</string>
     <string name="logout">注销</string>
     <string name="title_activity_me">MeActivity</string>
-
+    <string name="home">首页</string>
+    <string name="message">消息</string>
+    <string name="discover">发现</string>
+    <string name="profile">我</string>
 </resources>

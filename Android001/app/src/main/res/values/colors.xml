@@ -7,7 +7,7 @@
     <color name="txt_hint_gray">#aaaaaa</color>
 
     <color name="bg">#ededed</color>
-
+    <color name="theme">#00CCFF</color>
     <color name="fragment_login_btn">#00CCFF</color>
     <color name="fragment_login_btn_focus">#00BBFF</color>
 </resources>
